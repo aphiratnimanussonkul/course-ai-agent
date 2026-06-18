@@ -29,6 +29,12 @@ crewai install
 
 ## Running the Project
 
+#### Register Serper
+1. Go to https://serper.dev/logs
+2. Sign up & Sign in
+3. Generate API Key
+4. Update the API key on `.env` file
+
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
