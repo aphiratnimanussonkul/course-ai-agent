@@ -4,5 +4,11 @@ gradio
 pypdf
 openai
 openai-agents
+anthropic
+pydantic
 mailersend
+langgraph
+langchain
+langchain-openai
+langchain-community
 crewai
