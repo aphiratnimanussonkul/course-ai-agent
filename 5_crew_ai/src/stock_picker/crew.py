@@ -108,37 +108,40 @@ class StockPicker:
             process=Process.hierarchical,
             verbose=True,
             manager_agent=manager,
-            memory=True,
+            # memory=True,
             # Long-term memory for persistent storage across sessions
-            long_term_memory=LongTermMemory(
-                storage=LTMSQLiteStorage(db_path="./memory/long_term_memory_storage.db")
-            ),
+            # The "enduring storage." Retains facts, user preferences, and task results across multiple sessions and days.
+            # long_term_memory=LongTermMemory(
+            #     storage=LTMSQLiteStorage(db_path="./memory/long_term_memory_storage.db")
+            # ),
             # Short-term memory for current context using RAG
-            short_term_memory=ShortTermMemory(
-                storage=RAGStorage(
-                    embedder_config={
-                        "provider": "openai",
-                        "config": {
-                            "model_name": "text-embedding-3-small",
-                            "api_key": os.getenv("OPENAI_API_KEY"),
-                        },
-                    },
-                    type="short_term",
-                    path="./memory/",
-                )
-            ),
+            #The "scratchpad." Temporarily holds immediate, session-level conversation history and tool outputs to maintain coherence during an active interaction.
+            # short_term_memory=ShortTermMemory(
+            #     storage=RAGStorage(
+            #         embedder_config={
+            #             "provider": "openai",
+            #             "config": {
+            #                 "model_name": "text-embedding-3-small",
+            #                 "api_key": os.getenv("OPENAI_API_KEY"),
+            #             },
+            #         },
+            #         type="short_term",
+            #         path="./memory/",
+            #     )
+            # ),
             # Entity memory for tracking key information about entities
-            entity_memory=EntityMemory(
-                storage=RAGStorage(
-                    embedder_config={
-                        "provider": "openai",
-                        "config": {
-                            "model_name": "text-embedding-3-small",
-                            "api_key": os.getenv("OPENAI_API_KEY"),
-                        },
-                    },
-                    type="short_term",
-                    path="./memory/",
-                )
-            ),
+            # The "knowledge graph." Specifically extracts, tracks, and recalls details about specific people, places, and concepts (e.g., project names, locations, colleagues) for pinpoint accuracy.
+            # entity_memory=EntityMemory(
+            #     storage=RAGStorage(
+            #         embedder_config={
+            #             "provider": "openai",
+            #             "config": {
+            #                 "model_name": "text-embedding-3-small",
+            #                 "api_key": os.getenv("OPENAI_API_KEY"),
+            #             },
+            #         },
+            #         type="short_term",
+            #         path="./memory/",
+            #     )
+            # ),
         )
